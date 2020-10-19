@@ -2,11 +2,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Dependencies
 
-# Frontend
+### Frontend
 Node.js <br />
 Yarn <br />
 
-# Backend
+### Backend
 
 Flask <br />
 python-dotenv <br />
