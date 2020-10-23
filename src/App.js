@@ -13,6 +13,8 @@ function App() {
   const [expectedLotteryTeams, setExpectedLotteryTeams] = useState([])
 
   const [playoffTeams, setPlayoffTeams] = useState([])
+
+  const arrExpectedLotteryTeams = []
   useEffect(() => {
     fetch('/test').then(res => res.json()).then(data => {
       console.log(data[0])
@@ -35,9 +37,11 @@ function App() {
       console.log(data)
       setLotteryTeams(data)
       setExpectedLotteryTeams(data)
+      
     });
   }, [])
-  
+
+  expectedLotteryTeams.forEach(team=>arrExpectedLotteryTeams.push(team.TeamCity))
 
   return (
     <div className="App">
@@ -59,9 +63,16 @@ function App() {
             </tr>
             {lotteryTeams.map((team,index) =>{
               var index = index+1;
-
+              var change = arrExpectedLotteryTeams.indexOf(team.TeamCity) - index + 1;
               return <tr key={team.TeamCity}>
-              <td className='order'> {index} </td>
+              <td className='order'> 
+                <div className = 'pick-container'>{index} 
+                  <div className = 'change' style={{display: change === 0 ? "none" : "inline-block" , color: change >0 ? "lightgreen" : "red"}}>
+                    <svg src="up-arrow.svg"></svg>
+                     {arrExpectedLotteryTeams.indexOf(team.TeamCity) - index + 1}
+                  </div>
+                </div> 
+              </td>
               <td className='city'>{team.TeamCity}</td>
               <td className='win-pct'>{team.WinPCT}</td>
               <td className='record'>{team.Record}</td>
@@ -100,10 +111,7 @@ function App() {
   }
 
   function reset() {
-    fetch('/lottery_teams').then(res => res.json()).then(data => {
-      console.log(data)
-      setLotteryTeams(data)
-    });
+    setLotteryTeams(expectedLotteryTeams)
   }
 }
 
