@@ -9,6 +9,9 @@ function App() {
   const [currentPTS, setCurrentPTS] = useState(0);
 
   const [lotteryTeams, setLotteryTeams] = useState([])
+
+  const [expectedLotteryTeams, setExpectedLotteryTeams] = useState([])
+
   const [playoffTeams, setPlayoffTeams] = useState([])
   useEffect(() => {
     fetch('/test').then(res => res.json()).then(data => {
@@ -31,9 +34,64 @@ function App() {
     fetch('/lottery_teams').then(res => res.json()).then(data => {
       console.log(data)
       setLotteryTeams(data)
+      setExpectedLotteryTeams(data)
     });
   }, [])
+  
 
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1>NBA TANK RANKINGS</h1>
+      </header>
+      <body className ="App-body">
+        <div>
+          <button className="simulate" onClick={simulateLottery}>Simulate</button>
+          <button className="button" onClick={reset}>Reset</button>
+        </div>
+        <table className="draft-board">
+          <tbody>
+            <tr className="headers">
+              <td>Draft Pos</td>
+              <td>Team</td>
+              <td>Win Percentage</td>
+              <td>Record</td>
+            </tr>
+            {lotteryTeams.map((team,index) =>{
+              var index = index+1;
+
+              return <tr key={team.TeamCity}>
+              <td className='order'> {index} </td>
+              <td className='city'>{team.TeamCity}</td>
+              <td className='win-pct'>{team.WinPCT}</td>
+              <td className='record'>{team.Record}</td>
+            </tr>})}
+            <tr>
+              <td className='lottery-break'colspan="4">LOTTERY ENDS HERE</td>
+              
+            </tr>
+            {playoffTeams.map((team, index) => {
+              var index = index+15;
+
+              var row = <tr key={team.TeamCity}>
+                <td className='order'>{index}</td>
+                <td className='city'>{team.TeamCity}</td>
+                <td className='win-pct'>{team.WinPCT}</td>
+                <td className='record'>{team.Record}</td>
+              </tr>
+              return row
+
+          
+          })}
+
+            
+          </tbody>
+        </table>
+        <p>{currentPlayer} averages {(currentPTS / currentGP).toFixed(2)} points per game.</p>
+      </body>
+    </div>
+  );
+  
   function simulateLottery() {
     fetch('/simulate').then(res => res.json()).then(data => {
       console.log(data)
@@ -47,44 +105,6 @@ function App() {
       setLotteryTeams(data)
     });
   }
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <div>
-          <button className="simulate" onClick={simulateLottery}>Simulate</button>
-          <button className="button" onClick={reset}>Reset</button>
-        </div>
-        
-        <tbody>
-          {lotteryTeams.map(team => <tr key={team.TeamCity}>
-            <td className='city'>{team.TeamCity}</td>
-            <td className='win-pct'>{team.WinPCT}</td>
-            <td className='record'>{team.Record}</td>
-          </tr>)}
-          {playoffTeams.map(team => <tr key={team.TeamCity}>
-            <td className='city'>{team.TeamCity}</td>
-            <td className='win-pct'>{team.WinPCT}</td>
-            <td className='record'>{team.Record}</td>
-          </tr>)}
-
-          
-        </tbody>
-        <p>{currentPlayer} averages {(currentPTS / currentGP).toFixed(2)} points per game.</p>
-      </header>
-    </div>
-  );
 }
 
 export default App;

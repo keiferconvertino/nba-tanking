@@ -15,6 +15,16 @@
 
 .App-header {
   background-color:#2E9FD3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-body {
+  background-color:#2E9FD3;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -28,23 +38,49 @@
   color: #1d438b;
 }
 
+table.draft-board {
+  position: relative;
+  width: 60%;
+  margin-top: 12px;
+}
+
 tbody {
-  font-size: 20px
+  font-size: 20px;
+
+}
+
+tr{
+  
+  outline: thin solid #ffffff;
+}
+tr.headers {
+  font-weight: bold;
+  font-size: 20px;
+  color: rgb(0, 0, 0)
+}
+td.lottery-break {
+  background-color: pink;
+  color: black;
+
 }
 
 td {
+  outline: thin solid #ffffff;
   vertical-align: middle;
 }
+td.record {
+  width: 10%
+}
 td.city {
-  width: 150px
+  width: 50%;
 }
 
 td.win-pct {
-  width: 100px
+  width: 25%
 }
 
 td.record {
-  width: 100px
+  width: 15%
 }
 
 @keyframes App-logo-spin {
