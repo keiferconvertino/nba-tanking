@@ -63,7 +63,7 @@ def get_lottery_teams():
 
 @app.route('/tank_leaders')
 def get_tank_leaders():
-    query = 'SELECT PLAYER_NAME, TEAM_ABBREVIATION, PLUS_MINUS * MIN AS TANK_RANK FROM PLAYER_STATS ORDER BY TANK_RANK ASC LIMIT 5'
+    query = 'SELECT PLAYER_NAME, TEAM_ABBREVIATION, PLUS_MINUS * MIN AS TANK_RANK FROM PLAYER_STATS ORDER BY TANK_RANK ASC LIMIT 10'
     res = query_db(query)
     return jsonify(res)
 
