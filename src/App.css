@@ -1,3 +1,5 @@
+
+
 .App {
   text-align: center;
 }
@@ -20,18 +22,18 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color:#ffffff;
 }
 
 .App-body {
-  background-color:#2E9FD3;
+  background-color:#ffffff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color:#2E9FD3;
 }
 
 .App-link {
@@ -40,17 +42,25 @@
 
 table.draft-board {
   position: relative;
-  width: 60%;
-  margin-top: 12px;
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+
 }
 
+Button.button {
+  margin-right: 5px;
+  margin-top: 10px;
+  width: 100px;
+  background-color: #2E9FD3;
+  color: white;
+}
 tbody {
   font-size: 20px;
 
 }
 
 tr{
-  
   outline: thin solid #ffffff;
 }
 tr.headers {
@@ -59,29 +69,32 @@ tr.headers {
   color: rgb(0, 0, 0)
 }
 td.lottery-break {
-  background-color: pink;
+  background-color:#2E9FD3;
   color: black;
+  font-weight: bold;
+  text-align: center;
+  
 
 }
 
 td {
-  outline: thin solid #ffffff;
+  /* outline: thin solid #ffffff; */
   vertical-align: middle;
 }
 td.order {
-  width: 10%;
+  width: 4%;
   text-align: left;
 }
 td.city {
-  width: 50%;
+  width: 15%;
 }
 
 td.win-pct {
-  width: 25%
+  width: 10%
 }
 
 td.record {
-  width: 15%
+  width: 10%
 }
 
 div.pick-container {
@@ -90,11 +103,12 @@ div.pick-container {
 
 div.change {
   right: 0px;
-  margin-right: 5px;
-  margin-top: 3px;
+  margin-right: auto;
+  margin-top: auto;
   text-align: right;
   font-size: 15px;
   position: absolute;
+  color:
 }
 
 @keyframes App-logo-spin {

@@ -12,7 +12,7 @@ lottery_balls = [140, 140, 140, 125, 105, 90, 75, 60, 45, 30, 20, 15, 10, 5]
 lottery_odds = [0 for i in range(len(lottery_balls))]
 lottery_odds[0] = lottery_balls[0]
 
-for i in range(1,len(lottery_balls)):
+for i in range(1, len(lottery_balls)):
     lottery_odds[i] = lottery_odds[i-1] + lottery_balls[i]
 
 
@@ -61,6 +61,12 @@ def get_lottery_teams():
     res = query_db(query)
     return jsonify(res)
 
+@app.route('/tank_leaders')
+def get_tank_leaders():
+    query = 'SELECT PLAYER_NAME, TEAM_ABBREVIATION, PLUS_MINUS * MIN AS TANK_RANK FROM PLAYER_STATS ORDER BY TANK_RANK ASC LIMIT 5'
+    res = query_db(query)
+    return jsonify(res)
+
 @app.route('/simulate')
 def simulate_lottery():
     query = 'SELECT TeamCity, WinPCT, Record FROM TEAM_STATS WHERE PlayoffRank > 8 ORDER BY WinPCT'
@@ -72,7 +78,7 @@ def simulate_lottery():
 
     picks_made = []
     while len(picks_made) < 4:
-        ball = random.randint(0,1000)
+        ball = random.randint(0, 1000)
         for i, odds in enumerate(lottery_odds):
             if odds > ball:
                 if i not in picks_made:

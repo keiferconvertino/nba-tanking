@@ -1,20 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { useTable } from 'react-table'
+import TankTable from './components/TankTable';
+import Button from '@material-ui/core/Button';
 
 function App() {
+
   const [currentPlayer, setCurrentPlayer] = useState("");
   const [currentGP, setCurrentGP] = useState(1);
   const [currentPTS, setCurrentPTS] = useState(0);
 
   const [lotteryTeams, setLotteryTeams] = useState([])
+  const [expectedLotteryTeams, setExpectedLotteryTeams] = useState([]);
 
-  const [expectedLotteryTeams, setExpectedLotteryTeams] = useState([])
-
-  const [playoffTeams, setPlayoffTeams] = useState([])
-
-  const arrExpectedLotteryTeams = []
   useEffect(() => {
     fetch('/test').then(res => res.json()).then(data => {
       console.log(data[0])
@@ -25,13 +22,7 @@ function App() {
     });
   }, [])
 
-  useEffect(() => {
-    fetch('/playoff_teams').then(res => res.json()).then(data => {
-      console.log(data)
-      setPlayoffTeams(data)
-    });
-  }, [])
-
+    
   useEffect(() => {
     fetch('/lottery_teams').then(res => res.json()).then(data => {
       console.log(data)
@@ -41,8 +32,6 @@ function App() {
     });
   }, [])
 
-  expectedLotteryTeams.forEach(team=>arrExpectedLotteryTeams.push(team.TeamCity))
-
   return (
     <div className="App">
       <header className="App-header">
@@ -50,58 +39,15 @@ function App() {
       </header>
       <body className ="App-body">
         <div>
-          <button className="simulate" onClick={simulateLottery}>Simulate</button>
-          <button className="button" onClick={reset}>Reset</button>
+          <Button variant="contained" className="button" onClick = {simulateLottery}>Simulate</Button>
+          <Button variant="contained" className="button" onClick = {reset}>Reset</Button>
         </div>
-        <table className="draft-board">
-          <tbody>
-            <tr className="headers">
-              <td>Draft Pos</td>
-              <td>Team</td>
-              <td>Win Percentage</td>
-              <td>Record</td>
-            </tr>
-            {lotteryTeams.map((team,index) =>{
-              var index = index+1;
-              var change = arrExpectedLotteryTeams.indexOf(team.TeamCity) - index + 1;
-              return <tr key={team.TeamCity}>
-              <td className='order'> 
-                <div className = 'pick-container'>{index} 
-                  <div className = 'change' style={{display: change === 0 ? "none" : "inline-block" , color: change >0 ? "lightgreen" : "red"}}>
-                    <svg src="up-arrow.svg"></svg>
-                     {arrExpectedLotteryTeams.indexOf(team.TeamCity) - index + 1}
-                  </div>
-                </div> 
-              </td>
-              <td className='city'>{team.TeamCity}</td>
-              <td className='win-pct'>{team.WinPCT}</td>
-              <td className='record'>{team.Record}</td>
-            </tr>})}
-            <tr>
-              <td className='lottery-break'colspan="4">LOTTERY ENDS HERE</td>
-              
-            </tr>
-            {playoffTeams.map((team, index) => {
-              var index = index+15;
-
-              var row = <tr key={team.TeamCity}>
-                <td className='order'>{index}</td>
-                <td className='city'>{team.TeamCity}</td>
-                <td className='win-pct'>{team.WinPCT}</td>
-                <td className='record'>{team.Record}</td>
-              </tr>
-              return row
-
-          
-          })}
-
-            
-          </tbody>
-        </table>
+        <TankTable lotteryT = {lotteryTeams} expectedLotteryT = {expectedLotteryTeams}/>
         <p>{currentPlayer} averages {(currentPTS / currentGP).toFixed(2)} points per game.</p>
       </body>
     </div>
   );
+
   
   function simulateLottery() {
     fetch('/simulate').then(res => res.json()).then(data => {
@@ -113,6 +59,7 @@ function App() {
   function reset() {
     setLotteryTeams(expectedLotteryTeams)
   }
+  
 }
 
 export default App;
