@@ -14,7 +14,7 @@ function TankTeams() {
     const [expectedLotteryTeams, setExpectedLotteryTeams] = useState([]);
 
     useEffect(() => {
-        fetch('/test').then(res => res.json()).then(data => {
+        fetch('/api/test').then(res => res.json()).then(data => {
         console.log(data[0])
         let player = data[0]
         setCurrentPlayer(player.PLAYER_NAME)
@@ -25,7 +25,7 @@ function TankTeams() {
 
         
     useEffect(() => {
-        fetch('/lottery_teams').then(res => res.json()).then(data => {
+        fetch('/api/lottery_teams').then(res => res.json()).then(data => {
         console.log(data)
         setLotteryTeams(data)
         setExpectedLotteryTeams(data)
@@ -35,17 +35,17 @@ function TankTeams() {
 
     return (
         <body className ="App-body">
-        <div>
-          <Button variant="contained" className="button" onClick = {simulateLottery}>Simulate</Button>
-          <Button variant="contained" className="button" onClick = {reset}>Reset</Button>
-        </div>
-        <TankTable lotteryT = {lotteryTeams} expectedLotteryT = {expectedLotteryTeams}/>
-        <p>{currentPlayer} averages {(currentPTS / currentGP).toFixed(2)} points per game.</p>
-      </body>
+            <div>
+            <Button variant="contained" className="button" onClick = {simulateLottery}>Simulate</Button>
+            <Button variant="contained" className="button" onClick = {reset}>Reset</Button>
+            </div>
+            <TankTable lotteryT = {lotteryTeams} expectedLotteryT = {expectedLotteryTeams}/>
+            <p>{currentPlayer} averages {(currentPTS / currentGP).toFixed(2)} points per game.</p>
+        </body>
     )
 
     function simulateLottery() {
-        fetch('/simulate').then(res => res.json()).then(data => {
+        fetch('/api/simulate').then(res => res.json()).then(data => {
           console.log(data)
           setLotteryTeams(data)
         });

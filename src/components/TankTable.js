@@ -29,7 +29,7 @@ function TankTable(props) {
     console.log(props.lotteryT);
   
     useEffect(() => {
-      fetch('/playoff_teams').then(res => res.json()).then(data => {
+      fetch('/api/playoff_teams').then(res => res.json()).then(data => {
         console.log(data)
         setPlayoffTeams(data)
       });
@@ -43,7 +43,7 @@ function TankTable(props) {
                 <Table  className="draft-board">
                     <TableHead >
                         <TableRow className="headers">
-                            <TableCell>Draft Pos</TableCell>
+                            <TableCell>Pick</TableCell>
                             <TableCell>Team</TableCell>
                             <TableCell align="right">Win Percentage</TableCell>
                             <TableCell align="right">Record</TableCell>

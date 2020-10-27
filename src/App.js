@@ -12,15 +12,16 @@ function App() {
       <div className="App">
         
         <header className="App-header">
-          <div >
-            <Link className = 'App-link' to="/">Home</Link>
-            &nbsp;|&nbsp;
-            <Link className = 'App-link' to="/leaders">Tank Leaders</Link>
-          </div>
           <h1>NBA TANK RANKINGS</h1>
         </header>
+        <div className="subheader">
+          <div className = 'page-links'>
+            <Link className = 'App-link' to="/">HOME</Link>
+            <Link className = 'App-link' to="/commanders">TANK COMMANDERS</Link>
+          </div>
+        </div>
         <Switch>
-          <Route path="/leaders">
+          <Route path="/commanders">
             <TankLeaders></TankLeaders>
           </Route>
           <Route path = "/"> 

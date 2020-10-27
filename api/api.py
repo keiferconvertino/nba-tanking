@@ -1,10 +1,10 @@
-from flask import Flask, g
+from flask import Flask, g, request
 import sqlite3
 from flask.json import jsonify
 import os
 import random
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../build', static_url_path='/')
 
 DATABASE = 'nba.db'
 
@@ -43,31 +43,45 @@ def query_db(query, args=()):
     cur.close()
     return rv
 
+@app.errorhandler(404)
+def not_found(e):
+    return app.send_static_file('index.html')
 
-@app.route('/test')
+@app.route('/')
+def index():
+    return app.send_static_file('index.html')
+
+@app.route('/api/test')
 def get_test():
     res = query_db('SELECT PLAYER_NAME, PTS, GP FROM PLAYER_STATS ORDER BY RANDOM() LIMIT 1')
     return jsonify(res)
 
-@app.route('/playoff_teams')
+@app.route('/api/playoff_teams')
 def get_teams():
     query = 'SELECT TeamCity, WinPCT, Record FROM TEAM_STATS WHERE PlayoffRank <= 8 ORDER BY WinPCT'
     res = query_db(query)
     return jsonify(res)
 
-@app.route('/lottery_teams')
+@app.route('/api/lottery_teams')
 def get_lottery_teams():
     query = 'SELECT TeamCity, WinPCT, Record FROM TEAM_STATS WHERE PlayoffRank > 8 ORDER BY WinPCT'
     res = query_db(query)
     return jsonify(res)
 
-@app.route('/tank_leaders')
+@app.route('/api/tank_leaders')
 def get_tank_leaders():
-    query = 'SELECT PLAYER_NAME, TEAM_ABBREVIATION, PLUS_MINUS * MIN AS TANK_RANK FROM PLAYER_STATS ORDER BY TANK_RANK ASC LIMIT 10'
-    res = query_db(query)
+    team = request.args.get('team')
+    if team:
+        query = 'SELECT p.PLAYER_NAME, t.TeamCity, p.PLUS_MINUS * p.MIN AS TANK_RANK FROM PLAYER_STATS p INNER JOIN TEAM_STATS t ON p.TEAM_ID = t.TeamID WHERE t.TeamCity = ? ORDER BY TANK_RANK ASC LIMIT 5'
+        args = [team]
+        res = query_db(query, args)
+    else:
+        query = 'SELECT p.PLAYER_NAME, t.TeamCity, p.PLUS_MINUS * MIN AS TANK_RANK FROM PLAYER_STATS p INNER JOIN TEAM_STATS t ON p.TEAM_ID = t.TeamID ORDER BY TANK_RANK ASC LIMIT 10'
+        res = query_db(query)
+
     return jsonify(res)
 
-@app.route('/simulate')
+@app.route('/api/simulate')
 def simulate_lottery():
     query = 'SELECT TeamCity, WinPCT, Record FROM TEAM_STATS WHERE PlayoffRank > 8 ORDER BY WinPCT'
     lottery_teams = query_db(query)

@@ -26,8 +26,7 @@
 }
 
 .App-body {
-  background-color:#ffffff;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,7 +36,17 @@
 }
 
 .App-link {
-  color: #ffffff;
+  color: rgb(131, 122, 122);
+  padding: 0px 15px;
+  display: flex;
+  text-decoration: none;
+  font-weight: bold;
+  font-size:20px;
+  
+}
+
+.App-link:hover {
+  color:#2E9FD3;
 }
 
 table.draft-board {
@@ -60,9 +69,29 @@ tbody {
 
 }
 
+div.subheader {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 1px 7px grey;
+}
+
 div.city-and-logo {
   display: block;
-  
+  }
+
+div.page-links {
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+}
+h1 {
+  margin-top: 0px;
+  margin-bottom: 8px;
+  display: inline-block;
 }
 img.logo {
   vertical-align: bottom;
@@ -115,6 +144,10 @@ div.change {
   text-align: right;
   font-size: 15px;
   position: absolute;
+}
+div.team-select{
+  margin:0px;
+  padding:0px;
 }
 
 @keyframes App-logo-spin {
