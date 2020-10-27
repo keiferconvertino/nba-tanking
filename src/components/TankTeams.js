@@ -36,8 +36,8 @@ function TankTeams() {
     return (
         <body className ="App-body">
             <div>
-            <Button variant="contained" className="button" onClick = {simulateLottery}>Simulate</Button>
-            <Button variant="contained" className="button" onClick = {reset}>Reset</Button>
+                <Button variant="contained" className="button" onClick = {simulateLottery}>Simulate</Button>
+                <Button variant="contained" className="button" onClick = {reset}>Reset</Button>
             </div>
             <TankTable lotteryT = {lotteryTeams} expectedLotteryT = {expectedLotteryTeams}/>
             <p>{currentPlayer} averages {(currentPTS / currentGP).toFixed(2)} points per game.</p>

@@ -21,10 +21,13 @@ function TankLeaders(props) {
     return (
       <body className ="App-body">
         <TeamList team = {currentTeam} changeHandler = {handleChange}></TeamList>
-        <div>
+        <div className = 'commanders'>
           {currentTankLeaders.map((player) => {
             return (
-              <div>{player.PLAYER_NAME}</div>
+              <div className = 'player-name-and-image'>
+                <img className = 'player-headshot' src = {'https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/1040x760/' + player.PLAYER_ID +'.png'}></img>
+                {player.PLAYER_NAME}
+              </div>
             )
           })}
         </div>

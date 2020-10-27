@@ -100,6 +100,11 @@ img.logo {
   width: 20px;
 }
 
+img.player-headshot {
+  height: 10%;
+  width: 10%;
+}
+
 tr.headers {
   font-weight: bold;
   font-size: 20px;
@@ -131,6 +136,13 @@ td.win-pct {
 
 td.record {
   width: 10%
+}
+
+div.commanders {
+  width: 100%;
+}
+div.player-name-and-image {
+  float: left;
 }
 
 div.pick-container {
