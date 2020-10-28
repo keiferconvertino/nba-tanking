@@ -1,3 +1,12 @@
+## The App
+This web application can simulate the NBA Draft Lottery <br />
+
+It also can present the worst players across the league <br />
+These individuals are the League's "Tank Commanders" - those responsible for causing their teams to lose and get a better draft pick! <br />
+
+## Demo
+
+![Demo](/demo/nba-tanking-demo-1.png)
 ## Dependencies
 
 ### Frontend
