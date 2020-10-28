@@ -25,8 +25,12 @@ function TankLeaders(props) {
           {currentTankLeaders.map((player) => {
             return (
               <div className = 'player-name-and-image'>
-                <img className = 'player-headshot' src = {'https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/1040x760/' + player.PLAYER_ID +'.png'}></img>
-                {player.PLAYER_NAME}
+                <div className = 'player-image'>
+                  <img className = 'player-headshot' src = {'https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/' + player.PLAYER_ID +'.png'}></img>
+                </div>
+                <div className = 'player-name'>
+                  {player.PLAYER_NAME}
+                </div>
               </div>
             )
           })}

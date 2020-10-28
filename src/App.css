@@ -101,8 +101,8 @@ img.logo {
 }
 
 img.player-headshot {
-  height: 10%;
-  width: 10%;
+  height: 40%;
+  width: 40%;
 }
 
 tr.headers {
@@ -143,6 +143,7 @@ div.commanders {
 }
 div.player-name-and-image {
   float: left;
+  width: 20%;
 }
 
 div.pick-container {
