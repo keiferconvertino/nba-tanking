@@ -34,6 +34,10 @@ Use a python virtual environment (venv) with dependencies installed<br />
 
 The api will reload if you make edits.<br />
 
+Note: This command only works on Windows. <br />
+
+For Mac/Linux: Run `cd api && venv/bin/flask run --no-debugger`
+
 ### `yarn test`
 
 Launches the test runner in the interactive watch mode.<br />
