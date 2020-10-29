@@ -146,6 +146,10 @@ div.player-name-and-image {
   width: 20%;
 }
 
+div.player-plus-minus {
+  color: rgb(131, 122, 122);
+}
+
 div.pick-container {
   position: relative;
 }

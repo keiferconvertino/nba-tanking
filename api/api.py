@@ -72,11 +72,11 @@ def get_lottery_teams():
 def get_tank_leaders():
     team = request.args.get('team')
     if team:
-        query = 'SELECT p.PLAYER_NAME, p.PLAYER_ID, t.TeamCity, p.PLUS_MINUS AS TANK_RANK FROM PLAYER_STATS p INNER JOIN TEAM_STATS t ON p.TEAM_ID = t.TeamID WHERE t.TeamCity = ? ORDER BY TANK_RANK ASC LIMIT 5'
+        query = 'SELECT p.PLAYER_NAME, p.PLAYER_ID, t.TeamCity, ROUND(p.PLUS_MINUS - (SELECT AVG(p2.PLUS_MINUS) FROM PLAYER_STATS p2 WHERE p2.TEAM_ID = p.TEAM_ID), 2) AS TANK_RANK FROM PLAYER_STATS p INNER JOIN TEAM_STATS t ON p.TEAM_ID = t.TeamID WHERE t.TeamCity = ? ORDER BY TANK_RANK ASC LIMIT 5'
         args = [team]
         res = query_db(query, args)
     else:
-        query = 'SELECT p.PLAYER_NAME, p.PLAYER_ID, t.TeamCity, p.PLUS_MINUS AS TANK_RANK FROM PLAYER_STATS p INNER JOIN TEAM_STATS t ON p.TEAM_ID = t.TeamID ORDER BY TANK_RANK ASC LIMIT 10'
+        query = 'SELECT p.PLAYER_NAME, p.PLAYER_ID, t.TeamCity,ROUND(p.PLUS_MINUS - (SELECT AVG(p2.PLUS_MINUS) FROM PLAYER_STATS p2 WHERE p2.TEAM_ID = p.TEAM_ID), 2) AS TANK_RANK FROM PLAYER_STATS p INNER JOIN TEAM_STATS t ON p.TEAM_ID = t.TeamID ORDER BY TANK_RANK ASC LIMIT 15'
         res = query_db(query)
 
     return jsonify(res)

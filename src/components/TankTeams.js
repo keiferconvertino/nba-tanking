@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import '../App.css';
 import TankTable from './TankTable';
 import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 
 function TankTeams() {
 
@@ -45,6 +46,7 @@ function TankTeams() {
     )
 
     function simulateLottery() {
+
         fetch('/api/simulate').then(res => res.json()).then(data => {
           console.log(data)
           setLotteryTeams(data)

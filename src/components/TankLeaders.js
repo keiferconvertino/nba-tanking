@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import TeamList from './TeamList.js'
-import '../App.css'
+
 function TankLeaders(props) {
     const [currentTankLeaders, setTankLeaders] = useState([]);
     const [currentTeam, setCurrentTeam] = useState('');
@@ -30,6 +30,9 @@ function TankLeaders(props) {
                 </div>
                 <div className = 'player-name'>
                   {player.PLAYER_NAME}
+                </div>
+                <div className = 'player-plus-minus'>
+                 {Math.abs(player.TANK_RANK)} TR
                 </div>
               </div>
             )
