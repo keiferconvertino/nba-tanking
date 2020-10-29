@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Link, Switch, Route } from 'react-router-dom';
 import './App.css';
-import TankTeams from './components/TankTeams';
-import TankLeaders from './components/TankLeaders'
+import TankTeams from './components/home/TankTeams';
+import TankLeaders from './components/commanders/TankLeaders'
 
 
 function App() {

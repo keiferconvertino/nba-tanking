@@ -100,7 +100,17 @@ img.logo {
   width: 20px;
 }
 
-img.player-headshot {
+img.player-headshot-commander {
+  height: 45%;
+  width: 45%;
+}
+
+img.player-headshot-corporal {
+  height: 60%;
+  width: 60%;
+}
+
+img.player-headshot-private {
   height: 40%;
   width: 40%;
 }
@@ -138,12 +148,34 @@ td.record {
   width: 10%
 }
 
-div.commanders {
+div.tank-platoon {
   width: 100%;
 }
-div.player-name-and-image {
-  float: left;
-  width: 20%;
+div.commander {
+  margin: auto;
+  width: 40%;
+}
+
+div.corporals {
+  margin: auto;
+  width: 60%;
+  font-size: calc(15px + 1vmin);
+  
+}
+div.corporal {
+  width: 30%;
+  display: inline-block;
+}
+
+div.privates {
+  margin: auto;
+  font-size: calc(10px + 1vmin);
+  width: 75%;
+}
+
+div.private {
+  width: 25%;
+  display: inline-block;
 }
 
 div.player-plus-minus {
@@ -165,6 +197,18 @@ div.change {
 div.team-select{
   margin:0px;
   padding:0px;
+}
+
+footer {
+  background-color:#2E9FD3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  font-size: calc(10px + 1vmin);
+  color:#ffffff;
+
 }
 
 @keyframes App-logo-spin {

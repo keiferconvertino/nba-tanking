@@ -6,7 +6,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import logos from '../logos/logos.json'
+import logos from '../../logos/logos.json'
 
 import {MuiThemeProvider,createMuiTheme} from '@material-ui/core/styles'
 const theme = createMuiTheme({
@@ -39,7 +39,7 @@ function TankTable(props) {
         <MuiThemeProvider theme = {theme}>
             <TableContainer>
 
-                <Table  className="draft-board">
+                <Table className="draft-board">
                     <TableHead >
                         <TableRow className="headers">
                             <TableCell>Pick</TableCell>
