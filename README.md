@@ -6,7 +6,7 @@ These individuals are the League's "Tank Commanders" - those responsible for cau
 
 ## Demo
 
-![Demo](/demo/nba-tanking-demo-1.png)
+![Demo](/demo/gif-demo.gif)
 ## Dependencies
 
 ### Frontend
