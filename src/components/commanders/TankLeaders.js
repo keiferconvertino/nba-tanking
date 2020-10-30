@@ -31,7 +31,7 @@ function TankLeaders(props) {
           <TeamList team = {currentTeam} changeHandler = {handleChange}></TeamList>
           {platoon}
         </body>
-        <footer>* TR = TankRating (A metric measuring bad a player's plus/minus 
+        <footer>* TR = TankRating (A metric measuring bad a player's total plus/minus 
           is compared to the average plus/minus of their teammates)</footer>
       </div>
     )
