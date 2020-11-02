@@ -35,7 +35,7 @@ You will also see any lint errors in the console.
 
 ### `yarn start-api`
 
-Runs the Flask backend on [http://localhost:5000]<br />
+Runs the Flask backend on [http://localhost:5000](http://localhost:5000)<br />
 
 Use a python virtual environment (venv) with dependencies installed<br />
 
