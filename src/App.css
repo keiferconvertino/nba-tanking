@@ -153,7 +153,7 @@ div.tank-platoon {
 }
 div.commander {
   margin: auto;
-  width: 40%;
+  width: 25%;
 }
 
 div.corporals {
@@ -163,7 +163,7 @@ div.corporals {
   
 }
 div.corporal {
-  width: 30%;
+  width: 20%;
   display: inline-block;
 }
 
@@ -174,7 +174,7 @@ div.privates {
 }
 
 div.private {
-  width: 25%;
+  width: 15%;
   display: inline-block;
 }
 
@@ -197,6 +197,41 @@ div.change {
 div.team-select{
   margin:0px;
   padding:0px;
+}
+
+.spinner {
+  position: absolute;
+  left: 50%;
+  top: 17.5%;
+  height:100px;
+  width:100px;
+  margin:0px -60px;
+  -webkit-animation: rotation .6s infinite linear;
+  -moz-animation: rotation .6s infinite linear;
+  -o-animation: rotation .6s infinite linear;
+  animation: rotation .6s infinite linear;
+  border-left:10px solid rgba(0,174,239,.15);
+  border-right:10px solid rgba(0,174,239,.15);
+  border-bottom:10px solid rgba(0,174,239,.15);
+  border-top:10px solid rgba(0,174,239,.8);
+  border-radius:100%;
+}
+
+@-webkit-keyframes rotation {
+  from {-webkit-transform: rotate(0deg);}
+  to {-webkit-transform: rotate(359deg);}
+}
+@-moz-keyframes rotation {
+  from {-moz-transform: rotate(0deg);}
+  to {-moz-transform: rotate(359deg);}
+}
+@-o-keyframes rotation {
+  from {-o-transform: rotate(0deg);}
+  to {-o-transform: rotate(359deg);}
+}
+@keyframes rotation {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(359deg);}
 }
 
 footer {

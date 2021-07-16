@@ -3,6 +3,7 @@ import sqlite3
 from flask.json import jsonify
 import os
 import random
+import time
 
 app = Flask(__name__, static_folder='../build', static_url_path='/')
 
@@ -89,6 +90,7 @@ def get_tank_leaders():
 
 @app.route('/api/simulate')
 def simulate_lottery():
+    time.sleep(1)
     query = 'SELECT TeamCity, WinPCT, Record FROM TEAM_STATS WHERE PlayoffRank > 8 ORDER BY WinPCT'
     lottery_teams = query_db(query)
     rank = {}

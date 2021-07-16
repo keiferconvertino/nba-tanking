@@ -38,7 +38,6 @@ function TankTable(props) {
     return (
         <MuiThemeProvider theme = {theme}>
             <TableContainer>
-
                 <Table className="draft-board">
                     <TableHead >
                         <TableRow className="headers">
@@ -49,6 +48,9 @@ function TankTable(props) {
                         </TableRow>
                     </TableHead>
                     <TableBody>
+                        {props.simulating &&  (
+                            <div className = "spinner"></div>
+                        )}
                         {props.lotteryT.map((team,index) =>{
                             var index = index+1;
                             var change = arrExpectedLotteryTeams.indexOf(team.TeamCity) - index + 1;

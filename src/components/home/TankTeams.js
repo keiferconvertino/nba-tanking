@@ -6,6 +6,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 function TankTeams() {
 
+    const [simulating, setSimulating] = useState(false);
 
     const [currentPlayer, setCurrentPlayer] = useState("");
     const [currentGP, setCurrentGP] = useState(1);
@@ -40,17 +41,20 @@ function TankTeams() {
                 <Button variant="contained" className="button" onClick = {simulateLottery}>Simulate</Button>
                 <Button variant="contained" className="button" onClick = {reset}>Reset</Button>
             </div>
-            <TankTable lotteryT = {lotteryTeams} expectedLotteryT = {expectedLotteryTeams}/>
-            <p>{currentPlayer} averages {(currentPTS / currentGP).toFixed(2)} points per game.</p>
+            <TankTable lotteryT = {lotteryTeams} expectedLotteryT = {expectedLotteryTeams} simulating = {simulating}/>
+            {/* <p>{currentPlayer} averages {(currentPTS / currentGP).toFixed(2)} points per game.</p> */}
         </body>
     )
 
     function simulateLottery() {
-
-        fetch('/api/simulate').then(res => res.json()).then(data => {
-          console.log(data)
-          setLotteryTeams(data)
-        });
+        setSimulating(true);
+        fetch('/api/simulate')
+            .then(res => res.json())
+            .then(data => {
+                setSimulating(false);
+                console.log(data);
+                setLotteryTeams(data);
+            });
       }
     
       function reset() {
