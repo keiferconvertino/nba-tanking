@@ -6,7 +6,7 @@ These individuals are the League's "Tank Commanders" - those responsible for cau
 
 ## Demo
 
-![Demo](/demo/nba-tanking-demo-1.png)
+![Demo](/demo/gif-demo.gif)
 ## Dependencies
 
 ### Frontend
@@ -31,11 +31,11 @@ Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+You will also see any errors in the console.
 
 ### `yarn start-api`
 
-Runs the Flask backend on [http://localhost:5000]<br />
+Runs the Flask backend on [http://localhost:5000](http://localhost:5000)<br />
 
 Use a python virtual environment (venv) with dependencies installed<br />
 
