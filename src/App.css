@@ -18,6 +18,7 @@
 .App-header {
   background-color:#2E9FD3;
   display: flex;
+  width: 100%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -71,7 +72,7 @@ tbody {
 
 div.subheader {
   width: 100%;
-  padding: 10px;
+  padding: 10px 0px 10px 0px;
   display: flex;
   flex-direction: column;
   align-items: center;

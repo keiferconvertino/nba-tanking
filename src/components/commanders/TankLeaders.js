@@ -4,10 +4,14 @@ import LeagueTankLeaders from './LeagueTankLeaders.js'
 
 function TankLeaders(props) {
     const [currentTankLeaders, setTankLeaders] = useState([]);
-    const [currentTeam, setCurrentTeam] = useState('');
+    const [currentTeam, setCurrentTeam] = useState('All Teams');
+    const [loading, setLoading] = useState(true);
+
     useEffect(() => {
+        setLoading(true)
         fetch(`/api/tank_leaders?team=${currentTeam}`).then(res => res.json()).then(data => {
-          setTankLeaders(data)
+          setTankLeaders(data);
+          setLoading(false)
         });
       }, [currentTeam])
 
@@ -31,8 +35,11 @@ function TankLeaders(props) {
           <TeamList team = {currentTeam} changeHandler = {handleChange}></TeamList>
           {platoon}
         </body>
-        <footer>* TR = TankRating (A metric measuring bad a player's total plus/minus 
+        {!loading && (
+          <footer>* TR = TankRating (A metric measuring bad a player's total plus/minus 
           is compared to the average plus/minus of their teammates)</footer>
+        )}
+        
       </div>
     )
 }

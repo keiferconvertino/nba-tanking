@@ -6,7 +6,7 @@ These individuals are the League's "Tank Commanders" - those responsible for cau
 
 ## Demo
 
-![Demo](/demo/gif-demo.gif)
+![Demo](/demo/gif-demo-2.gif)
 ## Dependencies
 
 ### Frontend

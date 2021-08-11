@@ -72,7 +72,7 @@ def get_lottery_teams():
 @app.route('/api/tank_leaders')
 def get_tank_leaders():
     team = request.args.get('team')
-    if team:
+    if team != "All Teams":
         query = 'SELECT p.PLAYER_NAME, p.PLAYER_ID, t.TeamCity, ROUND((p.PLUS_MINUS - ' \
                 '(SELECT AVG(p2.PLUS_MINUS) FROM PLAYER_STATS p2 WHERE p2.TEAM_ID = p.TEAM_ID))/10, 2) AS TANK_RANK ' \
                 'FROM PLAYER_STATS p INNER JOIN TEAM_STATS t ON p.TEAM_ID = t.TeamID WHERE t.TeamCity = ? ' \

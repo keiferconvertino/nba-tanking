@@ -24,7 +24,7 @@ function TeamList(props) {
             value={props.team}
             onChange={props.changeHandler}
             >
-            <MenuItem value={''}>All Teams</MenuItem>
+            <MenuItem value={'All Teams'}>All Teams</MenuItem>
             <MenuItem value={'Atlanta'}>Atlanta Hawks</MenuItem>
             <MenuItem value={'Boston'}>Boston Celtics</MenuItem>
             <MenuItem value={'Brooklyn'}>Brooklyn Nets</MenuItem>
